@@ -1,19 +1,18 @@
-%Filename   : bss_obj_type_res_lease_and_grid_test.m
-%Description: 
+%Filename   : bss_evcust_00_smartgrid_1_res_1_test.m
+%Description: Test for no customers, has smart grid services
 % 
 %Modification History: 
 %======================================================================
 %Author          Date        Ver   Remarks  
 %======================================================================
-%william         2016-12-29  1.1   Creation
-%william         2016-12-30  1.2   Fixed Comments
+%william         2016-12-30  1.2   Creation
 %======================================================================
 
 %-----------
 default_values; 
 %-----------
 
-objective_type          = 'lease_and_grid';
+test_customer_data      = [];
 has_smart_grid_services = 1;
 reserved_batt           = 1; 
 
