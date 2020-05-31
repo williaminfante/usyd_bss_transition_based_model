@@ -1,20 +1,19 @@
-%Filename   : bss_obj_type_swap_lease_and_grid_seed_99_test.m
-%Description: 
+%Filename   : bss_evcust_00_smartgrid_0_test.m
+%Description: Test for no customers, NO smart grid services
 % 
 %Modification History: 
 %======================================================================
 %Author          Date        Ver   Remarks  
 %======================================================================
-%william         2016-12-06  1.0   Creation
+%william         2016-12-29  1.1   Creation
 %======================================================================
 
 %-----------
 default_values; 
 %-----------
 
-test_random_number      = 99; 
-objective_type          = 'swap_lease_and_grid';
-has_smart_grid_services = 1;
+test_customer_data      = [];
+has_smart_grid_services = 0;
 
 %-----------
 bss_thread; 

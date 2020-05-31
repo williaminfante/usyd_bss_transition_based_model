@@ -1,0 +1,56 @@
+========================================
+Version 1.0 (2016-12-26)
+- Creation 
+
+Added files: 
+bss_strategy_time.m 
+bss_obj_type_swap_only_seed_99_test.m 
+bss_obj_type_swap_lease_and_grid_seed_99_test.m 
+bss_obj_type_swap_and_grid_seed_99_test.m 
+bss_obj_type_lease_only_seed_99_test.m 
+bss_evcust_00_smartgrid_1_seed_88_test.m 
+bss_evcust_00_smartgrid_1_seed_29_test.m 
+bss_evcust_00_smartgrid_0_seed_29_test.m 
+bss_evcust_00_smartgrid_1_seed_05_test.m 
+bss_evcust_00_smartgrid_0_seed_05_test.m 
+bss_evcust_00_smartgrid_0_seed_88_test.m 
+default_values.m bss_parameters.m 
+bss_thread.m 
+bss_definitions.m
+
+========================================
+Version 1.1 (2016-12-29)
+- Added objective types and reservation 
+- Fixed seed generation
+
+Added files: 
+bss_evcust_00_smartgrid_0_test.m 
+bss_evcust_00_smartgrid_1_test.m 
+bss_obj_type_lease_and_grid_test.m 
+bss_obj_type_lease_only_test.m 
+bss_obj_type_res_lease_and_grid_test.m 
+bss_obj_type_res_swap_and_grid_test.m 
+bss_obj_type_res_swap_lease_and_grid_test.m 
+bss_obj_type_swap_and_grid_test.m 
+bss_obj_type_swap_and_lease_test.m 
+bss_obj_type_swap_lease_and_grid_test.m 
+bss_obj_type_swap_only_test.m 
+bss_test_grid_scheduling.m 
+bss_test_suite.m 
+xlsheets.m
+
+Removed files:
+bss_evcust_00_smartgrid_0_seed_05_test.m 
+bss_evcust_00_smartgrid_0_seed_29_test.m 
+bss_evcust_00_smartgrid_0_seed_88_test.m 
+bss_evcust_00_smartgrid_1_seed_05_test.m 
+bss_evcust_00_smartgrid_1_seed_29_test.m 
+bss_evcust_00_smartgrid_1_seed_88_test.m 
+bss_obj_type_lease_only_seed_99_test.m 
+bss_obj_type_swap_and_grid_seed_99_test.m 
+bss_obj_type_swap_lease_and_grid_seed_99_test.m 
+bss_obj_type_swap_only_seed_99_test.m
+
+Modified files:
+bss_strategy_time.m 
+default_values.m

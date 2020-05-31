@@ -1,20 +1,18 @@
-%Filename   : bss_evcust_00_smartgrid_1_seed_29_test.m
-%Description: Test for no customers, has smart grid services, seed 29, 1 yr
+%Filename   : bss_obj_type_lease_and_grid_test.m
+%Description: 
 % 
 %Modification History: 
 %======================================================================
 %Author          Date        Ver   Remarks  
 %======================================================================
-%william         2016-12-06  1.0   Creation
+%william         2016-12-29  1.1   Creation
 %======================================================================
 
 %-----------
 default_values; 
 %-----------
 
-test_random_number      = 29; 
-test_customer_data      = [];
-test_tot_time_in_hr     = 8760; %1 year
+objective_type          = 'lease_and_grid';
 has_smart_grid_services = 1;
 
 %-----------
