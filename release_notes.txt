@@ -1,4 +1,33 @@
 ========================================
+Version 1.3 (2017-01-13)
+- Added 2016 NSW Electricity Demand 
+
+Modified Files: 
+bss_strategy_time.m 
+default_values.m
+
+Added files: 
+2016_elec_price_365_days.mat 
+2016_elec_price_366_days.mat 
+level_hour_365.mat 
+mat_2016_elec_price_365_days.mat 
+mat_level_hour_365.mat
+bss_stage_01_evcust_00_grid_0_res_0_test.m 
+bss_stage_01_evcust_00_grid_1_res_0_test.m 
+bss_stage_01_evcust_00_grid_1_res_1_test.m 
+bss_stage_01_evcust_02_grid_0_res_0_test.m 
+bss_stage_01_evcust_02_grid_1_res_0_test.m 
+bss_stage_01_evcust_02_grid_1_res_1_test.m 
+bss_stage_01_test_suite.m 
+bss_stage_02_evcust_00_grid_0_res_0_test.m 
+bss_stage_02_evcust_00_grid_1_res_0_test.m 
+bss_stage_02_evcust_00_grid_1_res_1_test.m 
+bss_stage_02_evcust_02_grid_0_res_0_test.m 
+bss_stage_02_evcust_02_grid_1_res_0_test.m 
+bss_stage_02_evcust_02_grid_1_res_1_test.m 
+bss_stage_02_test_suite.m 
+
+========================================
 Version 1.2 (2016-12-30)
 - Added reservation for no customer 
   scenario

@@ -7,6 +7,7 @@
 %======================================================================
 %william         2016-12-06  1.0   Creation
 %william         2016-12-29  1.1   Added Objectives for Scenarios
+%william         2017-01-13  1.3   Added NSWD 2016 Electricity Data
 %======================================================================
 
 %External Condition A: Generate Electricity Demand
@@ -23,17 +24,48 @@ else
     error('no type of load existing'); 
 end
 
-for t = (1 + 1):T 
-    if (ismember(mod(t, 24), heavy_interval))
-        R_g(t) = R_gh;
-    elseif (ismember(mod(t, 24), light_interval))
-        R_g(t) = R_gl;
-    else
-        R_g(t) = R_gm; 
-    end        
+if (stage == 0)
+    for t = (1 + 1):T 
+        if (ismember(mod(t, 24), heavy_interval))
+            R_g(t) = R_gh;
+        elseif (ismember(mod(t, 24), light_interval))
+            R_g(t) = R_gl;
+        else
+            R_g(t) = R_gm; 
+        end        
+    end
+else
+    %Stage 1 & 2 : Based on 2016 NSWD Level Pricing
+    level_hour_365 = importdata('level_hour_365.mat');
+    level_hour_15_years = zeros(T, 1);
+    for year = 1:15
+        level_hour_15_years(8760*(year - 1) + 1: 8760*(year)) ...
+            = level_hour_365(1:8760);
+    end
+    t_level_15_years = transpose(level_hour_15_years); 
+    for t = (1 + 1):T 
+        switch t_level_15_years(t)
+            case 1
+                R_g(t) = R_gl;
+            case 2
+                R_g(t) = R_gm; 
+            case 3
+                R_g(t) = R_gh; 
+        end        
+    end
 end
 
 
+%Stage 2: Based on PROPORTIONAL pricing
+    
+if (stage == 2) 
+    price_hour_365 = importdata('2016_elec_price_365_days.mat');
+    price_hour_15_years = zeros(T, 1);    
+    for year = 1:15
+        price_hour_15_years(8760*(year - 1) + 1: 8760*(year)) ...
+            = price_hour_365(1:8760);
+    end
+end
 %External Condition B: Generate Customer Data
 hct_mx  = zeros(length(h_customer), T); %initial battery demand 
 hcb_mx  = zeros(length(h_customer), T); %customers with battery IDs 
@@ -337,7 +369,7 @@ for t = (1 + 1):T  %initial value at t = 1 already given
                 m_b(i,t-1) & k(i,t) & (R_g(t) == R_gl)); 
             
             if (has_smart_grid_services == false)                
-                    all_conditions = c01_special_order_v1       && ...
+                    all_conditions = c01_special_order_v1   && ...
                                  c03_soc_upper_limit        && ...
                                  c04_soc_lower_limit        && ...
                                  c07_soh_upper_limit        && ...
@@ -361,7 +393,7 @@ for t = (1 + 1):T  %initial value at t = 1 already given
                              
             else 
                 if (reserved_batt == 0) 
-                    all_conditions = c01_special_order_v1       && ...
+                    all_conditions = c01_special_order_v1   && ...
                                  c03_soc_upper_limit        && ...
                                  c04_soc_lower_limit        && ...
                                  c07_soh_upper_limit        && ...
@@ -505,11 +537,19 @@ for t = (1 + 1):T  %initial value at t = 1 already given
                        R_g(t)*(m_d(i,t) - m_c(i,t)) ...
                        - E_l*(v(i,t)) - E_d*(m_r(i,t));                       
                 elseif (strcmp(objective_type, 'swap_lease_and_grid'))
-                    objective(i,t) = objective(i,t-1) + ...
-                       R_s*(m_s(i,t)) + ...
-                       R_l*(m_s(i,t) + m_e(i,t)) + ...
-                       R_g(t)*(m_d(i,t) - m_c(i,t)) ...
-                       - E_l*(v(i,t)) - E_d*(m_r(i,t)); 
+                    if (stage == 2) 
+                        objective(i,t) = objective(i,t-1) + ...
+                           R_s*(m_s(i,t)) + ...
+                           R_l*(m_s(i,t) + m_e(i,t)) + ...
+                           price_hour_15_years(t)*(m_d(i,t) - m_c(i,t)) ...
+                           - E_l*(v(i,t)) - E_d*(m_r(i,t));    
+                    else 
+                        objective(i,t) = objective(i,t-1) + ...
+                           R_s*(m_s(i,t)) + ...
+                           R_l*(m_s(i,t) + m_e(i,t)) + ...
+                           R_g(t)*(m_d(i,t) - m_c(i,t)) ...
+                           - E_l*(v(i,t)) - E_d*(m_r(i,t)); 
+                    end 
                 end
             end
         end 
@@ -642,10 +682,17 @@ hct_mx2ch3 = 1 - (abs(diff([hct_mx2ch add_column], 1, 2)));
 hct_x = hct_mx2ch3 .* hct_mx2c; 
 hct_x_sum = sum(sum(hct_x));
 
-FileName=sprintf('%s_bss_%s_res_%d_seed_%d.xlsx',            ...
-        datestr(now, 'yymmdd_HHMM'), objective_type, ...
-        reserved_batt, test_random_number);
-
+if (stage == 0) 
+    FileName = sprintf('%s_365_bss_%s_res_%d_seed_%d.xlsx', ...
+            datestr(now, 'yymmdd_HHMM'), objective_type, ...
+            reserved_batt, test_random_number);
+else
+    FileName = ...
+    sprintf('%s_bss_stage_0%d_evcust_0%d_grid_%d_res_%d_seed_%d.xlsx',  ...
+    datestr(now, 'yymmdd_HHMM'), stage, ...
+    length(h_customer),has_smart_grid_services, ...
+    reserved_batt, test_random_number);    
+end
 f_mx.filename                       = FileName;      
 f_mx.objective_type                 = objective_type;
 f_mx.objective                      = sum(objective(:, T));
@@ -673,7 +720,8 @@ table_f_mx            = struct2table(f_mx);
 cell_f_mx             = table2cell(table_f_mx); 
 cell_f_mx_with_header = [table_f_mx.Properties.VariableNames;  cell_f_mx]; 
 
-sheetnames = {'final_state', 'defective','soh_good', 'soh_betr', 'soh_best'}; 
+sheetnames = ...
+    {'final_state', 'defective','soh_good', 'soh_betr', 'soh_best'}; 
 xlsheets(sheetnames, FileName);   
 
 

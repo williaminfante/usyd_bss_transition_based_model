@@ -8,6 +8,7 @@
 %william         2016-12-06  1.0   Creation
 %william         2016-12-29  1.1   Added reserved_batt
 %                                  Corrected random number generation
+%william         2017-01-13  1.3   Added stage for NSW Electricity
 %======================================================================
 
 test_customer_data      = [7, 17];  %(1 start at 7 am, 
@@ -19,3 +20,4 @@ objective_type          = 'swap_lease_and_grid';
 %flags
 has_smart_grid_services = 0;
 reserved_batt           = 0; 
+stage                   = 0; 
