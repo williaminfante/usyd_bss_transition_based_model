@@ -1,4 +1,73 @@
 ========================================
+Version 1.5 (2017-03-29)
+- Changed default to 30-minute interval 
+- Added Net Present Value
+- Only one state for EV use
+
+Modified Files: 
+bss_definitions.m 
+bss_parameters.m 
+bss_strategy_time.m 
+default_values.m
+
+Added files: 
+bss_mix_grid_0_res_0_ns_test.m 
+bss_mix_grid_0_res_0_sa_test.m 
+bss_mix_grid_1_res_0_ns_test.m 
+bss_mix_grid_1_res_0_sa_test.m 
+bss_mix_grid_1_res_1_ns_test.m 
+bss_mix_grid_1_res_1_sa_test.m 
+bss_pur_grid_0_res_0_ns_test.m 
+bss_pur_grid_0_res_0_sa_test.m 
+bss_pur_grid_1_res_0_ns_test.m 
+bss_pur_grid_1_res_0_sa_test.m 
+bss_pur_grid_1_res_1_ns_test.m 
+bss_pur_grid_1_res_1_sa_test.m 
+ns_lev_365_30.mat 
+ns_lev_365_hr.mat 
+ns_rrp_365_30.mat 
+ns_rrp_365_hr.mat 
+sa_lev_365_30.mat 
+sa_lev_365_hr.mat 
+sa_rrp_365_30.mat 
+sa_rrp_365_hr.mat 
+test_suite.m
+
+Removed files:
+2016_elec_price_365_days.mat 
+2016_elec_price_366_days.mat 
+bss_evcust_00_smartgrid_0_test.m 
+bss_evcust_00_smartgrid_1_res_1_test.m 
+bss_evcust_00_smartgrid_1_test.m 
+bss_obj_type_lease_and_grid_test.m 
+bss_obj_type_lease_only_test.m 
+bss_obj_type_res_lease_and_grid_test.m 
+bss_obj_type_res_swap_and_grid_test.m 
+bss_obj_type_res_swap_lease_and_grid_test.m 
+bss_obj_type_swap_and_grid_test.m 
+bss_obj_type_swap_and_lease_test.m 
+bss_obj_type_swap_lease_and_grid_test.m 
+bss_obj_type_swap_only_test.m 
+bss_stage_01_evcust_00_grid_0_res_0_test.m 
+bss_stage_01_evcust_00_grid_1_res_0_test.m 
+bss_stage_01_evcust_00_grid_1_res_1_test.m 
+bss_stage_01_evcust_02_grid_0_res_0_test.m 
+bss_stage_01_evcust_02_grid_1_res_0_test.m 
+bss_stage_01_evcust_02_grid_1_res_1_test.m 
+bss_stage_01_test_suite.m 
+bss_stage_02_evcust_00_grid_0_res_0_test.m 
+bss_stage_02_evcust_00_grid_1_res_0_test.m 
+bss_stage_02_evcust_00_grid_1_res_1_test.m 
+bss_stage_02_evcust_02_grid_0_res_0_test.m 
+bss_stage_02_evcust_02_grid_1_res_0_test.m 
+bss_stage_02_evcust_02_grid_1_res_1_test.m 
+bss_stage_02_test_suite.m 
+bss_test_grid_scheduling.m 
+bss_test_suite.m level_hour_365.mat 
+mat_2016_elec_price_365_days.mat 
+mat_level_hour_365.mat
+
+========================================
 Version 1.4 (2017-02-21)
 - Changed R_gl value to negative
 

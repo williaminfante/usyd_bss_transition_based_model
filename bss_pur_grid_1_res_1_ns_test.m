@@ -1,20 +1,20 @@
-%Filename   : bss_obj_type_res_swap_and_grid_test.m
+%Filename   : bss_pur_grid_1_res_1_ns_test.m
 %Description: 
 % 
 %Modification History: 
 %======================================================================
 %Author          Date        Ver   Remarks  
 %======================================================================
-%william         2016-12-29  1.1   Creation
+%william         2017-03-29  1.5   Creation
 %======================================================================
 
 %-----------
 default_values; 
 %-----------
-
-objective_type          = 'swap_and_grid';
+test_customer_data      = [];
 has_smart_grid_services = 1;
 reserved_batt           = 1; 
+test_load_type          = 'nswd';
 %-----------
 bss_thread; 
 %-----------

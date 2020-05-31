@@ -1,19 +1,20 @@
-%Filename   : bss_obj_type_lease_only_test.m
+%Filename   : bss_pur_grid_1_res_0_ns_test.m
 %Description: 
 % 
 %Modification History: 
 %======================================================================
 %Author          Date        Ver   Remarks  
 %======================================================================
-%william         2016-12-29  1.0   Creation
+%william         2017-03-29  1.5   Creation
 %======================================================================
 
 %-----------
 default_values; 
 %-----------
-
-objective_type          = 'lease_only';
-
+test_customer_data      = [];
+has_smart_grid_services = 1;
+reserved_batt           = 0; 
+test_load_type          = 'nswd';
 %-----------
 bss_thread; 
 %-----------

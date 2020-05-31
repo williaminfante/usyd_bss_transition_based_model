@@ -1,19 +1,20 @@
-%Filename   : bss_obj_type_swap_and_lease_test.m
+%Filename   : bss_pur_grid_1_res_1_sa_test.m
 %Description: 
 % 
 %Modification History: 
 %======================================================================
 %Author          Date        Ver   Remarks  
 %======================================================================
-%william         2016-12-29  1.1   Creation
+%william         2017-03-29  1.5   Creation
 %======================================================================
 
 %-----------
 default_values; 
 %-----------
-
-objective_type          = 'swap_and_lease';
-
+test_customer_data      = [];
+has_smart_grid_services = 1;
+reserved_batt           = 1; 
+test_load_type          = 'sa';
 %-----------
 bss_thread; 
 %-----------

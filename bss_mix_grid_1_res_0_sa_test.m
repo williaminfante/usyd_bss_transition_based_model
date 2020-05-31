@@ -1,22 +1,20 @@
-%Filename   : bss_obj_type_res_lease_and_grid_test.m
+%Filename   : bss_mix_grid_1_res_0_sa_test
 %Description: 
 % 
 %Modification History: 
 %======================================================================
 %Author          Date        Ver   Remarks  
 %======================================================================
-%william         2016-12-29  1.1   Creation
-%william         2016-12-30  1.2   Fixed Comments
+%william         2017-03-29  1.5   Creation
 %======================================================================
 
 %-----------
 default_values; 
 %-----------
 
-objective_type          = 'lease_and_grid';
 has_smart_grid_services = 1;
-reserved_batt           = 1; 
-
+reserved_batt           = 0; 
+test_load_type          = 'sa';
 %-----------
 bss_thread; 
 %-----------
